@@ -10,6 +10,8 @@ the notes of the version's GitHub Release.
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-10-15
+
 ### Added
 
 - Nintendo account sign-in like the Parental Controls app: the Connect button opens
@@ -28,4 +30,5 @@ the notes of the version's GitHub Release.
 - "Check the connection" and "Sign out of Nintendo" actions in the configuration.
 - Documentation in English, French, German and Spanish.
 
-[Unreleased]: https://github.com/guim31/gladys-nintendo-parental/commits/main
+[Unreleased]: https://github.com/guim31/gladys-nintendo-parental/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/guim31/gladys-nintendo-parental/releases/tag/v1.0.1
