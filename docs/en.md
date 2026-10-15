@@ -1,61 +1,117 @@
-# Demo Devices Template
+# Nintendo Parental Controls
 
-This is the user documentation of the integration. Gladys re-hosts this file
-and shows a permanent **Documentation** link to it in the Configuration screen
-(in the user's language, with English as the fallback) — it is when
-configuring that the user needs it most. Keep the short onboarding hints in
-the `section` blocks of the manifest `config_schema`; put the long
-step-by-step (screenshots, troubleshooting…) here.
+## Overview
 
-## What you get
+This integration brings the **Nintendo Switch Parental Controls** into Gladys, like the "Nintendo Switch Parental Controls" smartphone app: for each console linked to your Nintendo account, today's play time, the daily limit, the time remaining, the bonus time, the current or last game, whether someone is playing, and what happens at the limit (an alarm only, or the software suspended).
 
-Six demo devices show up after installation: a weather station (real data
-from Open-Meteo), a switch, a dimmable light, a smart plug with power
-metering, a motion sensor and a camera.
+It also **acts** like the app: change the daily limit, add bonus time for today, suspend the software at the limit. Scene triggers let Gladys react when a child starts playing, when the limit is almost reached or when it is exceeded, and a dashboard widget shows the consoles with "+15 min" and "Suspend" buttons.
+
+It works for the Nintendo Switch, the Nintendo Switch Lite, the Nintendo Switch OLED and the Nintendo Switch 2, through Nintendo's servers (the console needs Internet access). It uses the same private API as the app, documented by the [pynintendoparental](https://github.com/pantherale0/pynintendoparental) library that Home Assistant uses. This integration is not affiliated with Nintendo: Nintendo Switch is a trademark of Nintendo.
+
+Developed without the hardware: no console and no Nintendo account were at hand, everything was built on real answers published with pynintendoparental. Feedback welcome, on the forum or in the GitHub issues.
+
+## Prerequisites
+
+- Gladys Assistant 5.1.0 or later.
+- A Nintendo account (the parent's), with the console(s) already paired in the **Nintendo Switch Parental Controls** app ([set it up](https://www.nintendo.com/my/support/switch/parentalcontrols/app/setup.html)).
+- A computer browser for the sign-in step (the link to copy is easier to get there than on a phone).
 
 ## Configuration
 
-1. Open the **Configuration** tab of the integration.
-2. Set the **latitude** and **longitude** the demo weather station should
-   observe (they default to Paris), and pick your temperature unit.
-   The **refresh interval** sets how often the weather station and the
-   plug's power are read: every 5 minutes by default, every minute at most.
-3. Save: the devices appear in the **Discovery** tab, ready to be added.
+In Gladys, **Integrations**, **Nintendo Parental Controls**, **Configuration**:
 
-The **Prefer the local connection** toggle drives the demo plug: it reports
-the channel it actually uses as a badge (local or cloud), with an orange dot
-when it runs degraded (local refused, cloud fallback).
+1. Click **Connect** next to "Nintendo account": the Nintendo sign-in page opens in a new tab.
+2. Sign in with the **parent account** used in the Parental Controls app. Your password is typed on nintendo.com only and never goes through Gladys.
+3. Nintendo shows the account and a red **Select this person** button. Do not click it: **right-click** it and choose **Copy link address** (on a phone: long press, Copy link). The link starts with `npf54789befb391a838://auth#`.
+4. Paste it in **Link of "Select this person"** and **save**. The badge turns to connected within a few seconds. The link works once and only a few minutes: if it is refused, click Connect again and paste the new link quickly.
 
-## Actions
+| Field                         | Content                                                                                                                |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Nintendo account              | The **Connect** button.                                                                                                |
+| Link of "Select this person"  | The copied link. Used once: the integration then keeps its own Nintendo session in its data volume, never in the logs. |
+| Refresh interval              | 1, 2 or 5 minutes (1 minute by default).                                                                               |
+| Language of the feature names | English, French (default), German or Spanish: the names of the features, the limit list and the texts sent to scenes.  |
 
-- **Test the weather provider** — performs a live request to Open-Meteo and
-  shows the current temperature and humidity under the button.
-- **Identify a device** — pick one of your devices in the list and it will
-  signal itself (the demo light "blinks" in the logs).
+Then open the **Discovery** tab and add the consoles you want as devices.
 
-## Scenes
+## Devices
 
-The integration adds its own cards to the scene editor (Gladys 5.1 or
-later), under the **Integrations** category:
+One device per console, named after its name in the app and its model, for example "Living room (Nintendo Switch 2)".
 
-- **Motion detected** (trigger) — starts the scene when a demo motion sensor
-  sees something move. Optionally pick the sensor and what moved (person,
-  animal); left empty, any detection matches. The following actions can
-  read what moved with `{{triggerEvent.data.target}}`.
-- **Identify a device** (action) — makes the chosen device signal itself.
-  It returns whether the device could signal itself, so the following
-  actions can depend on it.
+| Feature                   | Type                 | Content                                                                                                                                                                                         |
+| ------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Play time today           | Duration (minutes)   | Total play time of the console today, every player added up.                                                                                                                                    |
+| Time remaining            | Duration (minutes)   | What the limit plus the bonus leaves, or the time until the bedtime alarm if it comes first. Without limit nor bedtime: the time until midnight, like in the app.                               |
+| Daily limit               | List (**command**)   | "No limit", or 15 minutes to 6 hours by 15 minutes, the choices of the app. In the "same every day" mode, it changes every day; in the "per day" mode, only this day of the week, like the app. |
+| Bonus time today          | Duration (minutes)   | Extra time granted today, 0 without. "No limit today" shows as 1440.                                                                                                                            |
+| Current or last game      | Text                 | The game whose play time grew last, or the last game played.                                                                                                                                    |
+| Playing                   | Binary               | 1 while the play time keeps growing. See "Limits": known a few minutes late.                                                                                                                    |
+| Online                    | Binary               | 1 when the console sent its play data in the last 20 minutes, or is playing.                                                                                                                    |
+| Suspend software at limit | Switch (**command**) | On: the software is suspended when the limit is reached. Off: an alarm only.                                                                                                                    |
 
-## Dashboard
+The two commands are parental settings, like in the app: they never unlock anything a parent did not choose. Note that any Gladys user allowed to control devices (or a voice assistant linked to Gladys) can use them: keep the console devices out of the rooms shared with children if needed.
 
-Add the **Demo status** widget to a dashboard: it shows the live
-temperature of the weather station and the power of the office plug, the
-connection the plug currently uses (orange when degraded) and the observed
-location. Its **Identify the light** button makes the demo light signal
-itself.
+## Widget
+
+The **Nintendo Switch** widget shows, for the console chosen in its settings (or the only one of the account): the play time, the time remaining and the limit, the current or last game, the mode at the limit, and three buttons, each asking for a confirmation:
+
+- **+15 min**: 15 minutes of bonus for today;
+- **Alarm only** and **Suspend**: what happens at the limit, the current one marked by a check.
+
+Once a bonus is granted for the day, Nintendo refuses any change of the mode or of the limit until the next day: the widget says so instead of the mode buttons. Without a console chosen and with several consoles, the widget lists them all (play time / limit), without buttons.
+
+## Scene triggers
+
+Each one can be narrowed to one console, and passes the console name and the game to the scene.
+
+- **Starts playing**: the play time of the console starts growing again (a new session after a break of more than 20 minutes). An optional filter keeps one game (exact name, as in the app). Known a few minutes late (see "Limits").
+- **Limit almost reached**: while someone plays, the time remaining before the limit or the bedtime alarm drops to 30, 15, 10 or 5 minutes (chosen in the trigger). Fires once per crossing; a bonus or a higher limit re-arms it.
+- **Limit exceeded**: the play time of the day reaches the daily limit plus the bonus. Once per day, again after a bonus is used up.
+
+The first reading after a start of the integration, and the start of a new day, only set the reference: no event.
+
+## Scene actions
+
+- **Add bonus time**: 5, 10, 15 or 30 minutes for today, like the app. Gives the bonus of the day and the time remaining to the next steps. Nintendo refuses it past bedtime or when the day cannot be extended any more: the scene action then fails with the reason.
+- **Set the daily limit**: "No limit" or 15 minutes to 6 hours, written where the app writes it (every day, or this day of the week in the per-day mode).
+
+Once a bonus is granted for the day, Nintendo refuses a new limit until the next day: the scene action then fails with the reason.
+
+## Configuration actions
+
+- **Check the connection**: reads the consoles of the account now and lists them, or says what is wrong.
+- **Sign out of Nintendo**: deletes the Nintendo session kept by the integration. Connect again to use it.
+
+## Scene examples
+
+- **Warn before the end**: trigger "Limit almost reached", 10 minutes, the living room console → announce "10 minutes left on the Switch" on the speaker of the living room.
+- **The limit is over**: trigger "Limit exceeded" → send a message to the parents, and set "Suspend software at limit" to on for the next days.
+- **Homework first**: trigger "Starts playing" on a weekday before 17:00 → send a notification to the parents with the game (`console_name`, `game` variables).
+- **Reward**: when a chore is marked done in Gladys → scene action "Add bonus time", 15 minutes.
+
+## Refresh and Nintendo quotas
+
+The integration asks Nintendo by itself at the chosen interval (it does not depend on the Gladys poll): per console, two requests per refresh (today's summaries and the settings), plus the list of consoles every 30 minutes and a new access token about every 10 minutes. With one console and the default interval, about 2 requests per minute, the pace of the Home Assistant integration.
+
+Nintendo publishes no quota for this private API; when it answers "too many requests" (HTTP 429), the integration pauses 5 minutes. The data are only as fresh as the console's own reports: a console uploads its play time every few minutes, so a faster interval does not bring faster data.
+
+The API is the one of the official app, used here the same way, for your own account only. Nintendo may change it at any time: if it asks for a newer app version, the Configuration screen says so and an update of the integration is needed.
 
 ## Troubleshooting
 
-The integration logs everything it does: check the integration logs from the
-Gladys UI (or `docker logs` on the host) with `LOG_LEVEL=debug` for the full
-detail.
+- **"The pasted text is not the link…"**: copy the link address of the red "Select this person" button, not the address of the page.
+- **"Nintendo refused the link"**: the link was already used or is too old (a few minutes). Click Connect again and paste the new link quickly.
+- **"This link comes from another sign-in"**: the link was copied after another click on Connect, or from another tool. Click Connect again and use the new page.
+- **"Nintendo ended the session"**: the password was changed, or the account was signed out of every device. Connect again.
+- **"No console is linked"**: pair the console in the Nintendo Switch Parental Controls app first.
+- **Playing time does not move**: the console must be connected to the Internet; it reports its play time every few minutes.
+- Logs: in Gladys, the integration page, **Logs**. Set the `LOG_LEVEL` variable to `debug` to see each refresh. No token is ever written there.
+
+## Limits
+
+- Developed without the hardware: every answer of Nintendo comes from the published tests of pynintendoparental. Feedback welcome.
+- **Playing**, **Starts playing** and the current game are deduced from the play time growing: Nintendo publishes no "playing now" information. They are known a few minutes late, and a game played less than a minute may not show.
+- **Online** means "sent play data in the last 20 minutes": Nintendo gives no live presence of the console.
+- The bedtime alarm and its end, the per-day settings, the content restrictions, the PIN and the monthly reports are not exposed: change them in the app.
+- When a bonus is granted for the day, Nintendo refuses any change of the limit or of the mode until the next day.
+- One Nintendo account per integration.

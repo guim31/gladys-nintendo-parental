@@ -30,6 +30,26 @@ Gladys before reporting a problem.
 
 In scope: the code of this repository and the Docker image it publishes.
 
+What the integration holds and where:
+
+- **The Nintendo session token**, the long-lived credential of the parent's
+  Nintendo account obtained when the pasted link is used, in
+  `/data/nintendo-state.json` (readable by the container user only, mode 600),
+  with the sign-ins in progress (state and PKCE verifier) and what was seen of
+  each console today. Short-lived id tokens stay in memory. "Sign out of
+  Nintendo" deletes the session. None of them is ever written to the logs.
+- **The pasted link** (single use, expires within minutes) stays in the Gladys
+  configuration as a secret field; only a fingerprint of it is kept in `/data`.
+- **The password** of the Nintendo account never goes through the integration:
+  it is typed on nintendo.com only.
+
+Network: outgoing HTTPS only, to `accounts.nintendo.com` (sign-in, tokens) and
+`app.lp1.znma.srv.nintendo.net` (Parental Controls API). The container listens
+on no port.
+
+A report about what someone with access to Gladys can do with the commands
+(change the limit, add bonus time, change the mode) is in scope too.
+
 Out of scope: Gladys Assistant itself (see its
 [security policy](https://github.com/GladysAssistant/Gladys/security/policy)),
-and the third-party services and devices the integration talks to.
+and the Nintendo services and consoles the integration talks to.

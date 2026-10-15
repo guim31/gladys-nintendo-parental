@@ -1,177 +1,918 @@
 {
   "manifest_version": 1,
   "type": "device",
-  "name": "Demo Devices Template",
+  "name": "Nintendo Parental Controls",
   "description": {
-    "en": "Starter template showing sensors, a switch, a dimmable light and a smart plug.",
-    "fr": "Template de démarrage : capteurs, interrupteur, lampe variable et prise connectée."
+    "en": "Nintendo Switch play time: daily limit, bonus time, current game, alerts and buttons.",
+    "fr": "Temps de jeu Nintendo Switch : limite du jour, temps bonus, jeu en cours, alertes et boutons.",
+    "de": "Spielzeit der Nintendo Switch: Tageslimit, Bonuszeit, aktuelles Spiel, Hinweise und Tasten.",
+    "es": "Tiempo de juego de Nintendo Switch: límite diario, tiempo extra, juego actual, avisos y botones."
   },
   "version": "1.0.0",
-  "docker_image": "ghcr.io/gladysassistant/integration-template-js:1.0.0",
+  "docker_image": "ghcr.io/guim31/gladys-nintendo-parental:1.0.0",
   "gladys_version": ">=5.1.0",
-  "cover_image": "https://raw.githubusercontent.com/GladysAssistant/integration-template-js/master/cover.png",
-  "categories": ["lighting", "security", "environment"],
-  "transports": ["local", "cloud"],
+  "cover_image": "https://raw.githubusercontent.com/guim31/gladys-nintendo-parental/main/cover.png",
+  "categories": ["multimedia"],
+  "transports": ["cloud"],
   "config_schema": [
     {
       "key": "intro",
       "type": "section",
-      "label": { "en": "Getting started", "fr": "Pour commencer" },
+      "label": {
+        "en": "Connect your Nintendo account",
+        "fr": "Connecter votre compte Nintendo",
+        "de": "Dein Nintendo-Konto verbinden",
+        "es": "Conectar su cuenta Nintendo"
+      },
       "description": {
-        "en": "The demo weather station reads real data from the free Open-Meteo API: pick the coordinates to observe. No account, no API key.",
-        "fr": "La station météo de démonstration lit de vraies données via l'API gratuite Open-Meteo : choisissez les coordonnées à observer. Pas de compte, pas de clé d'API."
+        "en": "Click Connect and sign in with the parent account of the Parental Controls app. Then right-click the red \"Select this person\" button, copy the link address and paste it below. Your password never goes through Gladys.",
+        "fr": "Cliquez sur Connecter et identifiez-vous avec le compte parent de l'appli Contrôle parental. Faites ensuite un clic droit sur le bouton rouge « Choisir cette personne », copiez l'adresse du lien et collez-la ci-dessous. Votre mot de passe ne passe jamais par Gladys.",
+        "de": "Klicke auf Verbinden und melde dich mit dem Elternkonto der Jugendschutz-App an. Klicke dann mit der rechten Maustaste auf den roten Knopf „Diese Person auswählen“, kopiere die Linkadresse und füge sie unten ein. Dein Passwort geht nie über Gladys.",
+        "es": "Haga clic en Conectar e inicie sesión con la cuenta de padre de la aplicación de control parental. Luego haga clic derecho en el botón rojo «Seleccionar a esta persona», copie la dirección del enlace y péguela abajo. Su contraseña nunca pasa por Gladys."
       },
       "links": [
         {
-          "url": "https://open-meteo.com/en/docs",
-          "label": { "en": "Open-Meteo documentation", "fr": "Documentation Open-Meteo" }
+          "url": "https://www.nintendo.com/my/support/switch/parentalcontrols/app/setup.html",
+          "label": {
+            "en": "Set up the Parental Controls app",
+            "fr": "Installer l'appli Contrôle parental",
+            "de": "Jugendschutz-App einrichten",
+            "es": "Configurar la aplicación de control parental"
+          }
+        },
+        {
+          "url": "https://github.com/guim31/gladys-nintendo-parental/blob/main/docs/en.md",
+          "label": {
+            "en": "Step-by-step guide",
+            "fr": "Guide pas à pas",
+            "de": "Schritt-für-Schritt-Anleitung",
+            "es": "Guía paso a paso"
+          }
         }
       ]
     },
     {
-      "key": "latitude",
-      "type": "number",
-      "label": { "en": "Latitude", "fr": "Latitude" },
-      "description": {
-        "en": "Latitude used for the demo weather sensor.",
-        "fr": "Latitude utilisée par le capteur météo de démonstration."
+      "key": "nintendo_account",
+      "type": "account_link",
+      "label": {
+        "en": "Nintendo account",
+        "fr": "Compte Nintendo",
+        "de": "Nintendo-Konto",
+        "es": "Cuenta Nintendo"
       },
-      "placeholder": { "en": "e.g. 48.8566", "fr": "ex. 48.8566" },
-      "required": true,
-      "default": 48.8566,
-      "min": -90,
-      "max": 90
+      "description": {
+        "en": "Opens the Nintendo sign-in page.",
+        "fr": "Ouvre la page de connexion de Nintendo.",
+        "de": "Öffnet die Anmeldeseite von Nintendo.",
+        "es": "Abre la página de inicio de sesión de Nintendo."
+      }
     },
     {
-      "key": "longitude",
-      "type": "number",
-      "label": { "en": "Longitude", "fr": "Longitude" },
-      "description": {
-        "en": "Longitude used for the demo weather sensor.",
-        "fr": "Longitude utilisée par le capteur météo de démonstration."
+      "key": "redirect_link",
+      "type": "secret",
+      "label": {
+        "en": "Link of \"Select this person\"",
+        "fr": "Lien de « Choisir cette personne »",
+        "de": "Link von „Diese Person auswählen“",
+        "es": "Enlace de «Seleccionar a esta persona»"
       },
-      "placeholder": { "en": "e.g. 2.3522", "fr": "ex. 2.3522" },
-      "required": true,
-      "default": 2.3522,
-      "min": -180,
-      "max": 180
+      "description": {
+        "en": "Starts with npf54789befb391a838://auth. Used once: the integration then keeps its own session.",
+        "fr": "Commence par npf54789befb391a838://auth. Utilisé une fois : l'intégration garde ensuite sa propre session.",
+        "de": "Beginnt mit npf54789befb391a838://auth. Wird einmal benutzt: danach behält die Integration ihre eigene Sitzung.",
+        "es": "Empieza por npf54789befb391a838://auth. Se usa una vez: luego la integración conserva su propia sesión."
+      },
+      "placeholder": {
+        "en": "npf54789befb391a838://auth#…",
+        "fr": "npf54789befb391a838://auth#…",
+        "de": "npf54789befb391a838://auth#…",
+        "es": "npf54789befb391a838://auth#…"
+      },
+      "required": false
     },
     {
-      "key": "unit",
+      "key": "refresh_interval",
       "type": "select",
-      "label": { "en": "Temperature unit", "fr": "Unité de température" },
+      "label": {
+        "en": "Refresh interval",
+        "fr": "Intervalle de rafraîchissement",
+        "de": "Aktualisierungsintervall",
+        "es": "Intervalo de actualización"
+      },
+      "description": {
+        "en": "How often Nintendo is asked for the play time. The console itself reports every few minutes.",
+        "fr": "Fréquence à laquelle Nintendo est interrogé. La console elle-même transmet toutes les quelques minutes.",
+        "de": "Wie oft Nintendo gefragt wird. Die Konsole selbst meldet sich alle paar Minuten.",
+        "es": "Con qué frecuencia se consulta a Nintendo. La propia consola informa cada pocos minutos."
+      },
       "required": false,
-      "default": "celsius",
+      "default": "60",
       "options": [
-        { "value": "celsius", "label": { "en": "Celsius", "fr": "Celsius" } },
-        { "value": "fahrenheit", "label": { "en": "Fahrenheit", "fr": "Fahrenheit" } }
+        {
+          "value": "60",
+          "label": {
+            "en": "1 minute",
+            "fr": "1 minute",
+            "de": "1 Minute",
+            "es": "1 minuto"
+          }
+        },
+        {
+          "value": "120",
+          "label": {
+            "en": "2 minutes",
+            "fr": "2 minutes",
+            "de": "2 Minuten",
+            "es": "2 minutos"
+          }
+        },
+        {
+          "value": "300",
+          "label": {
+            "en": "5 minutes",
+            "fr": "5 minutes",
+            "de": "5 Minuten",
+            "es": "5 minutos"
+          }
+        }
       ]
     },
     {
-      "key": "poll_frequency",
-      "type": "number",
-      "label": { "en": "Refresh interval (s)", "fr": "Intervalle de rafraîchissement (s)" },
+      "key": "language",
+      "type": "select",
+      "label": {
+        "en": "Language of the feature names",
+        "fr": "Langue des noms de fonctionnalités",
+        "de": "Sprache der Funktionsnamen",
+        "es": "Idioma de los nombres de funciones"
+      },
       "description": {
-        "en": "How often sensors are polled, in seconds (one minute minimum).",
-        "fr": "Fréquence d'interrogation des capteurs, en secondes (une minute minimum)."
+        "en": "Also used for the game titles and the texts sent to scenes.",
+        "fr": "Sert aussi aux titres des jeux et aux textes envoyés aux scènes.",
+        "de": "Gilt auch für die Spieltitel und die Texte an die Szenen.",
+        "es": "También se usa para los títulos de los juegos y los textos enviados a las escenas."
       },
       "required": false,
-      "default": 300,
-      "min": 60,
-      "max": 3600
+      "default": "fr",
+      "options": [
+        {
+          "value": "en",
+          "label": {
+            "en": "English",
+            "fr": "Anglais",
+            "de": "Englisch",
+            "es": "Inglés"
+          }
+        },
+        {
+          "value": "fr",
+          "label": {
+            "en": "French",
+            "fr": "Français",
+            "de": "Französisch",
+            "es": "Francés"
+          }
+        },
+        {
+          "value": "de",
+          "label": {
+            "en": "German",
+            "fr": "Allemand",
+            "de": "Deutsch",
+            "es": "Alemán"
+          }
+        },
+        {
+          "value": "es",
+          "label": {
+            "en": "Spanish",
+            "fr": "Espagnol",
+            "de": "Spanisch",
+            "es": "Español"
+          }
+        }
+      ]
     }
   ],
   "actions": [
     {
-      "key": "test_weather",
-      "label": { "en": "Test the weather provider", "fr": "Tester le fournisseur météo" },
-      "timeout_seconds": 30
+      "key": "check_connection",
+      "label": {
+        "en": "Check the connection",
+        "fr": "Tester la connexion",
+        "de": "Verbindung prüfen",
+        "es": "Comprobar la conexión"
+      },
+      "description": {
+        "en": "Reads the consoles of the Nintendo account now.",
+        "fr": "Lit maintenant les consoles du compte Nintendo.",
+        "de": "Liest jetzt die Konsolen des Nintendo-Kontos.",
+        "es": "Lee ahora las consolas de la cuenta Nintendo."
+      },
+      "timeout_seconds": 60
     },
     {
-      "key": "identify",
-      "label": { "en": "Identify a device", "fr": "Identifier un appareil" },
-      "fields": [
-        {
-          "key": "device",
-          "type": "select",
-          "source": "devices",
-          "label": { "en": "Device", "fr": "Appareil" },
-          "required": true
-        }
-      ]
+      "key": "sign_out",
+      "label": {
+        "en": "Sign out of Nintendo",
+        "fr": "Se déconnecter de Nintendo",
+        "de": "Von Nintendo abmelden",
+        "es": "Cerrar sesión de Nintendo"
+      },
+      "description": {
+        "en": "Deletes the Nintendo session kept by the integration.",
+        "fr": "Supprime la session Nintendo gardée par l'intégration.",
+        "de": "Löscht die Nintendo-Sitzung der Integration.",
+        "es": "Borra la sesión de Nintendo que guarda la integración."
+      },
+      "timeout_seconds": 10
     }
   ],
   "scene_triggers": [
     {
-      "key": "motion_detected",
-      "label": { "en": "Motion detected", "fr": "Mouvement détecté" },
+      "key": "started_playing",
+      "label": {
+        "en": "Starts playing",
+        "fr": "Commence à jouer",
+        "de": "Beginnt zu spielen",
+        "es": "Empieza a jugar"
+      },
       "description": {
-        "en": "A demo motion sensor saw a person or an animal move.",
-        "fr": "Un détecteur de démonstration a vu bouger une personne ou un animal."
+        "en": "The play time of the console starts growing again. Known a few minutes late: the console reports every few minutes.",
+        "fr": "Le temps de jeu de la console se remet à augmenter. Connu avec quelques minutes de retard : la console transmet toutes les quelques minutes.",
+        "de": "Die Spielzeit der Konsole steigt wieder. Mit einigen Minuten Verspätung bekannt: die Konsole meldet sich alle paar Minuten.",
+        "es": "El tiempo de juego de la consola vuelve a aumentar. Se sabe con unos minutos de retraso: la consola informa cada pocos minutos."
       },
       "fields": [
         {
-          "key": "device",
+          "key": "console",
           "type": "select",
           "source": "devices",
-          "label": { "en": "Sensor", "fr": "Détecteur" }
+          "label": {
+            "en": "Console",
+            "fr": "Console",
+            "de": "Konsole",
+            "es": "Consola"
+          }
         },
         {
-          "key": "target",
-          "type": "multi_select",
-          "label": { "en": "What moved", "fr": "Ce qui a bougé" },
+          "key": "game",
+          "type": "string",
+          "label": {
+            "en": "Game (exact name, optional)",
+            "fr": "Jeu (nom exact, facultatif)",
+            "de": "Spiel (genauer Name, optional)",
+            "es": "Juego (nombre exacto, opcional)"
+          },
+          "placeholder": {
+            "en": "e.g. Mario Kart 8 Deluxe",
+            "fr": "ex. Mario Kart 8 Deluxe",
+            "de": "z. B. Mario Kart 8 Deluxe",
+            "es": "p. ej. Mario Kart 8 Deluxe"
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "console_name",
+          "type": "string",
+          "label": {
+            "en": "Console name",
+            "fr": "Nom de la console",
+            "de": "Name der Konsole",
+            "es": "Nombre de la consola"
+          }
+        },
+        {
+          "key": "game",
+          "type": "string",
+          "label": {
+            "en": "Game",
+            "fr": "Jeu",
+            "de": "Spiel",
+            "es": "Juego"
+          }
+        },
+        {
+          "key": "playing_minutes",
+          "type": "number",
+          "label": {
+            "en": "Minutes played today",
+            "fr": "Minutes jouées aujourd'hui",
+            "de": "Heute gespielte Minuten",
+            "es": "Minutos jugados hoy"
+          }
+        },
+        {
+          "key": "remaining_minutes",
+          "type": "number",
+          "label": {
+            "en": "Minutes remaining",
+            "fr": "Minutes restantes",
+            "de": "Verbleibende Minuten",
+            "es": "Minutos restantes"
+          }
+        }
+      ]
+    },
+    {
+      "key": "limit_approaching",
+      "label": {
+        "en": "Limit almost reached",
+        "fr": "Limite bientôt atteinte",
+        "de": "Limit bald erreicht",
+        "es": "Límite casi alcanzado"
+      },
+      "description": {
+        "en": "While someone plays, the time left before the limit or bedtime drops to the chosen number of minutes.",
+        "fr": "Pendant le jeu, le temps restant avant la limite ou le coucher descend au nombre de minutes choisi.",
+        "de": "Während gespielt wird, sinkt die Zeit bis zum Limit oder zur Schlafenszeit auf die gewählten Minuten.",
+        "es": "Mientras se juega, el tiempo que queda antes del límite o de la hora de dormir baja a los minutos elegidos."
+      },
+      "fields": [
+        {
+          "key": "console",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Console",
+            "fr": "Console",
+            "de": "Konsole",
+            "es": "Consola"
+          }
+        },
+        {
+          "key": "minutes",
+          "type": "select",
+          "required": true,
+          "label": {
+            "en": "Minutes left",
+            "fr": "Minutes restantes",
+            "de": "Verbleibende Minuten",
+            "es": "Minutos restantes"
+          },
           "options": [
-            { "value": "person", "label": { "en": "Person", "fr": "Personne" } },
-            { "value": "animal", "label": { "en": "Animal", "fr": "Animal" } }
+            {
+              "value": "5",
+              "label": {
+                "en": "5 minutes",
+                "fr": "5 minutes",
+                "de": "5 Minuten",
+                "es": "5 minutos"
+              }
+            },
+            {
+              "value": "10",
+              "label": {
+                "en": "10 minutes",
+                "fr": "10 minutes",
+                "de": "10 Minuten",
+                "es": "10 minutos"
+              }
+            },
+            {
+              "value": "15",
+              "label": {
+                "en": "15 minutes",
+                "fr": "15 minutes",
+                "de": "15 Minuten",
+                "es": "15 minutos"
+              }
+            },
+            {
+              "value": "30",
+              "label": {
+                "en": "30 minutes",
+                "fr": "30 minutes",
+                "de": "30 Minuten",
+                "es": "30 minutos"
+              }
+            }
           ]
         }
       ],
       "variables": [
         {
-          "key": "target",
+          "key": "console_name",
           "type": "string",
-          "label": { "en": "What moved", "fr": "Ce qui a bougé" }
+          "label": {
+            "en": "Console name",
+            "fr": "Nom de la console",
+            "de": "Name der Konsole",
+            "es": "Nombre de la consola"
+          }
+        },
+        {
+          "key": "game",
+          "type": "string",
+          "label": {
+            "en": "Game",
+            "fr": "Jeu",
+            "de": "Spiel",
+            "es": "Juego"
+          }
+        },
+        {
+          "key": "remaining_minutes",
+          "type": "number",
+          "label": {
+            "en": "Minutes remaining",
+            "fr": "Minutes restantes",
+            "de": "Verbleibende Minuten",
+            "es": "Minutos restantes"
+          }
+        },
+        {
+          "key": "limit_minutes",
+          "type": "number",
+          "label": {
+            "en": "Daily limit (minutes, 0: none)",
+            "fr": "Limite du jour (minutes, 0 : aucune)",
+            "de": "Tageslimit (Minuten, 0: keins)",
+            "es": "Límite diario (minutos, 0: ninguno)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "limit_exceeded",
+      "label": {
+        "en": "Limit exceeded",
+        "fr": "Limite dépassée",
+        "de": "Limit überschritten",
+        "es": "Límite superado"
+      },
+      "description": {
+        "en": "The play time of the day reaches the daily limit plus the bonus time.",
+        "fr": "Le temps de jeu du jour atteint la limite du jour plus le temps bonus.",
+        "de": "Die Spielzeit des Tages erreicht das Tageslimit plus die Bonuszeit.",
+        "es": "El tiempo de juego del día alcanza el límite diario más el tiempo extra."
+      },
+      "fields": [
+        {
+          "key": "console",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Console",
+            "fr": "Console",
+            "de": "Konsole",
+            "es": "Consola"
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "console_name",
+          "type": "string",
+          "label": {
+            "en": "Console name",
+            "fr": "Nom de la console",
+            "de": "Name der Konsole",
+            "es": "Nombre de la consola"
+          }
+        },
+        {
+          "key": "game",
+          "type": "string",
+          "label": {
+            "en": "Game",
+            "fr": "Jeu",
+            "de": "Spiel",
+            "es": "Juego"
+          }
+        },
+        {
+          "key": "playing_minutes",
+          "type": "number",
+          "label": {
+            "en": "Minutes played today",
+            "fr": "Minutes jouées aujourd'hui",
+            "de": "Heute gespielte Minuten",
+            "es": "Minutos jugados hoy"
+          }
+        },
+        {
+          "key": "limit_minutes",
+          "type": "number",
+          "label": {
+            "en": "Daily limit (minutes, 0: none)",
+            "fr": "Limite du jour (minutes, 0 : aucune)",
+            "de": "Tageslimit (Minuten, 0: keins)",
+            "es": "Límite diario (minutos, 0: ninguno)"
+          }
         }
       ]
     }
   ],
   "scene_actions": [
     {
-      "key": "identify_device",
-      "label": { "en": "Identify a device", "fr": "Identifier un appareil" },
-      "description": {
-        "en": "Make a device signal itself (the demo light blinks).",
-        "fr": "Fait se signaler un appareil (la lampe de démonstration clignote)."
+      "key": "add_bonus_time",
+      "label": {
+        "en": "Add bonus time",
+        "fr": "Ajouter du temps bonus",
+        "de": "Bonuszeit hinzufügen",
+        "es": "Añadir tiempo extra"
       },
-      "timeout_seconds": 15,
+      "description": {
+        "en": "Extra play time for today only, like in the app. Nintendo refuses it past bedtime.",
+        "fr": "Du temps de jeu en plus pour aujourd'hui seulement, comme dans l'appli. Nintendo le refuse après le coucher.",
+        "de": "Zusätzliche Spielzeit nur für heute, wie in der App. Nintendo lehnt sie nach der Schlafenszeit ab.",
+        "es": "Tiempo de juego adicional solo para hoy, como en la aplicación. Nintendo lo rechaza después de la hora de dormir."
+      },
+      "timeout_seconds": 30,
       "fields": [
         {
-          "key": "device",
+          "key": "console",
           "type": "select",
           "source": "devices",
-          "label": { "en": "Device", "fr": "Appareil" },
+          "label": {
+            "en": "Console",
+            "fr": "Console",
+            "de": "Konsole",
+            "es": "Consola"
+          },
           "required": true
+        },
+        {
+          "key": "minutes",
+          "type": "select",
+          "required": true,
+          "default": "15",
+          "label": {
+            "en": "Bonus time",
+            "fr": "Temps bonus",
+            "de": "Bonuszeit",
+            "es": "Tiempo extra"
+          },
+          "options": [
+            {
+              "value": "5",
+              "label": {
+                "en": "5 minutes",
+                "fr": "5 minutes",
+                "de": "5 Minuten",
+                "es": "5 minutos"
+              }
+            },
+            {
+              "value": "10",
+              "label": {
+                "en": "10 minutes",
+                "fr": "10 minutes",
+                "de": "10 Minuten",
+                "es": "10 minutos"
+              }
+            },
+            {
+              "value": "15",
+              "label": {
+                "en": "15 minutes",
+                "fr": "15 minutes",
+                "de": "15 Minuten",
+                "es": "15 minutos"
+              }
+            },
+            {
+              "value": "30",
+              "label": {
+                "en": "30 minutes",
+                "fr": "30 minutes",
+                "de": "30 Minuten",
+                "es": "30 minutos"
+              }
+            }
+          ]
         }
       ],
       "outputs": [
         {
-          "key": "signalled",
-          "type": "boolean",
-          "label": { "en": "Device signalled", "fr": "Appareil signalé" }
+          "key": "bonus_minutes",
+          "type": "number",
+          "label": {
+            "en": "Bonus minutes today",
+            "fr": "Minutes bonus aujourd'hui",
+            "de": "Bonusminuten heute",
+            "es": "Minutos extra hoy"
+          }
+        },
+        {
+          "key": "remaining_minutes",
+          "type": "number",
+          "label": {
+            "en": "Minutes remaining",
+            "fr": "Minutes restantes",
+            "de": "Verbleibende Minuten",
+            "es": "Minutos restantes"
+          }
+        }
+      ]
+    },
+    {
+      "key": "set_daily_limit",
+      "label": {
+        "en": "Set the daily limit",
+        "fr": "Changer la limite du jour",
+        "de": "Tageslimit ändern",
+        "es": "Cambiar el límite diario"
+      },
+      "description": {
+        "en": "Writes the limit where the app keeps it: every day, or this day of the week in the per-day mode.",
+        "fr": "Écrit la limite là où l'appli la garde : chaque jour, ou ce jour de la semaine en mode par jour.",
+        "de": "Schreibt das Limit dorthin, wo die App es speichert: jeden Tag, oder diesen Wochentag im Modus pro Tag.",
+        "es": "Escribe el límite donde lo guarda la aplicación: todos los días, o este día de la semana en el modo por día."
+      },
+      "timeout_seconds": 20,
+      "fields": [
+        {
+          "key": "console",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Console",
+            "fr": "Console",
+            "de": "Konsole",
+            "es": "Consola"
+          },
+          "required": true
+        },
+        {
+          "key": "limit",
+          "type": "select",
+          "required": true,
+          "label": {
+            "en": "Daily limit",
+            "fr": "Limite du jour",
+            "de": "Tageslimit",
+            "es": "Límite diario"
+          },
+          "options": [
+            {
+              "value": "none",
+              "label": {
+                "en": "No limit",
+                "fr": "Sans limite",
+                "de": "Kein Limit",
+                "es": "Sin límite"
+              }
+            },
+            {
+              "value": "15",
+              "label": {
+                "en": "15 min",
+                "fr": "15 min",
+                "de": "15 Min.",
+                "es": "15 min"
+              }
+            },
+            {
+              "value": "30",
+              "label": {
+                "en": "30 min",
+                "fr": "30 min",
+                "de": "30 Min.",
+                "es": "30 min"
+              }
+            },
+            {
+              "value": "45",
+              "label": {
+                "en": "45 min",
+                "fr": "45 min",
+                "de": "45 Min.",
+                "es": "45 min"
+              }
+            },
+            {
+              "value": "60",
+              "label": {
+                "en": "1 h",
+                "fr": "1 h",
+                "de": "1 h",
+                "es": "1 h"
+              }
+            },
+            {
+              "value": "75",
+              "label": {
+                "en": "1 h 15",
+                "fr": "1 h 15",
+                "de": "1 h 15",
+                "es": "1 h 15"
+              }
+            },
+            {
+              "value": "90",
+              "label": {
+                "en": "1 h 30",
+                "fr": "1 h 30",
+                "de": "1 h 30",
+                "es": "1 h 30"
+              }
+            },
+            {
+              "value": "105",
+              "label": {
+                "en": "1 h 45",
+                "fr": "1 h 45",
+                "de": "1 h 45",
+                "es": "1 h 45"
+              }
+            },
+            {
+              "value": "120",
+              "label": {
+                "en": "2 h",
+                "fr": "2 h",
+                "de": "2 h",
+                "es": "2 h"
+              }
+            },
+            {
+              "value": "135",
+              "label": {
+                "en": "2 h 15",
+                "fr": "2 h 15",
+                "de": "2 h 15",
+                "es": "2 h 15"
+              }
+            },
+            {
+              "value": "150",
+              "label": {
+                "en": "2 h 30",
+                "fr": "2 h 30",
+                "de": "2 h 30",
+                "es": "2 h 30"
+              }
+            },
+            {
+              "value": "165",
+              "label": {
+                "en": "2 h 45",
+                "fr": "2 h 45",
+                "de": "2 h 45",
+                "es": "2 h 45"
+              }
+            },
+            {
+              "value": "180",
+              "label": {
+                "en": "3 h",
+                "fr": "3 h",
+                "de": "3 h",
+                "es": "3 h"
+              }
+            },
+            {
+              "value": "195",
+              "label": {
+                "en": "3 h 15",
+                "fr": "3 h 15",
+                "de": "3 h 15",
+                "es": "3 h 15"
+              }
+            },
+            {
+              "value": "210",
+              "label": {
+                "en": "3 h 30",
+                "fr": "3 h 30",
+                "de": "3 h 30",
+                "es": "3 h 30"
+              }
+            },
+            {
+              "value": "225",
+              "label": {
+                "en": "3 h 45",
+                "fr": "3 h 45",
+                "de": "3 h 45",
+                "es": "3 h 45"
+              }
+            },
+            {
+              "value": "240",
+              "label": {
+                "en": "4 h",
+                "fr": "4 h",
+                "de": "4 h",
+                "es": "4 h"
+              }
+            },
+            {
+              "value": "255",
+              "label": {
+                "en": "4 h 15",
+                "fr": "4 h 15",
+                "de": "4 h 15",
+                "es": "4 h 15"
+              }
+            },
+            {
+              "value": "270",
+              "label": {
+                "en": "4 h 30",
+                "fr": "4 h 30",
+                "de": "4 h 30",
+                "es": "4 h 30"
+              }
+            },
+            {
+              "value": "285",
+              "label": {
+                "en": "4 h 45",
+                "fr": "4 h 45",
+                "de": "4 h 45",
+                "es": "4 h 45"
+              }
+            },
+            {
+              "value": "300",
+              "label": {
+                "en": "5 h",
+                "fr": "5 h",
+                "de": "5 h",
+                "es": "5 h"
+              }
+            },
+            {
+              "value": "315",
+              "label": {
+                "en": "5 h 15",
+                "fr": "5 h 15",
+                "de": "5 h 15",
+                "es": "5 h 15"
+              }
+            },
+            {
+              "value": "330",
+              "label": {
+                "en": "5 h 30",
+                "fr": "5 h 30",
+                "de": "5 h 30",
+                "es": "5 h 30"
+              }
+            },
+            {
+              "value": "345",
+              "label": {
+                "en": "5 h 45",
+                "fr": "5 h 45",
+                "de": "5 h 45",
+                "es": "5 h 45"
+              }
+            },
+            {
+              "value": "360",
+              "label": {
+                "en": "6 h",
+                "fr": "6 h",
+                "de": "6 h",
+                "es": "6 h"
+              }
+            }
+          ]
         }
       ]
     }
   ],
   "widgets": [
     {
-      "key": "demo_status",
-      "label": { "en": "Demo status", "fr": "État de la démo" },
-      "description": {
-        "en": "Live temperature and plug power, plug connection and observed location.",
-        "fr": "Température et puissance en direct, connexion de la prise, position observée."
+      "key": "consoles",
+      "label": {
+        "en": "Nintendo Switch",
+        "fr": "Nintendo Switch",
+        "de": "Nintendo Switch",
+        "es": "Nintendo Switch"
       },
-      "icon": "activity",
-      "action_timeout_seconds": 15
+      "description": {
+        "en": "Play time against the limit, current game, +15 min and suspend buttons.",
+        "fr": "Temps joué face à la limite, jeu en cours, boutons +15 min et suspendre.",
+        "de": "Spielzeit gegen das Limit, aktuelles Spiel, Tasten +15 Min. und Unterbrechen.",
+        "es": "Tiempo jugado frente al límite, juego actual, botones +15 min y suspender."
+      },
+      "icon": "monitor",
+      "settings": [
+        {
+          "key": "console",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Console",
+            "fr": "Console",
+            "de": "Konsole",
+            "es": "Consola"
+          },
+          "description": {
+            "en": "Empty: every console (buttons when the account has only one).",
+            "fr": "Vide : toutes les consoles (boutons s'il n'y en a qu'une).",
+            "de": "Leer: alle Konsolen (Tasten, wenn das Konto nur eine hat).",
+            "es": "Vacío: todas las consolas (botones si la cuenta solo tiene una)."
+          }
+        }
+      ],
+      "action_timeout_seconds": 30
     }
   ]
 }
