@@ -16,8 +16,8 @@ its only runtime dependency. It started from the official JavaScript template.
 ```bash
 npm install
 npm test                                  # node --test, the built-in runner
-node --test test/devices.test.js          # one file
-node --test --test-name-pattern "plug"    # tests whose name matches
+node --test test/app.test.js              # one file
+node --test --test-name-pattern "bonus"   # tests whose name matches
 npm run lint                              # ESLint
 npm run format:check                      # Prettier, as the CI runs it
 npm run format                            # Prettier, fix in place
@@ -31,16 +31,24 @@ pushing.
 ## Architecture
 
 ```
-index.js                          SDK wiring only: handlers registered before connect()
-src/devices/index.js              registry of the device blueprints + dispatch helpers
-src/devices/<type>.js             one device type per file (buildDevice, onPoll, onSetValue...)
-src/scenes.js                     scene action handlers (manifest `scene_actions`)
-src/widgets.js                    dashboard widget handlers (manifest `widgets`)
+index.js                          SDK wiring only: createApp(), handlers registered before connect()
+src/app.js                        the integration: sign-in, refresh timer, states, events, commands, actions, widget
+src/session.js                    Nintendo session: pending sign-ins, session token (/data), id token renewal
+src/nintendo/auth.js              Nintendo account sign-in (PKCE URL, pasted link, session and id tokens)
+src/nintendo/client.js            Parental Controls API ("moon") client: endpoints and headers of the app
+src/nintendo/model.js             pure: snapshot of a console (today's regulation, limit, bonus, remaining time)
+src/tracker.js                    pure: playing detection, current game, scene events between two readings
+src/devices.js                    one Gladys device per console (external ids, features, states)
+src/widgets.js                    the "consoles" dashboard widget (pure builder)
+src/i18n.js                       every text the container produces, in en/fr/de/es
+src/store.js                      /data/nintendo-state.json (mode 600): session, pending sign-ins, tracks
+src/issues.js                     repeated failures logged once
 src/config.js                     DEFAULT_CONFIG (mirrors the manifest defaults) + normalization
-src/weather.js                    example driver (Open-Meteo)
-gladys-assistant-integration.json manifest: name, config_schema, actions, image...
-docs/en.md, docs/fr.md            user documentation, re-hosted by Gladys (mandatory)
-test/                             node --test, against the SDK's fake Gladys (integration-sdk/testing)
+scripts/probe.mjs                 read-only probe of the real Nintendo servers (fake values, or NINTENDO_SESSION_TOKEN)
+gladys-assistant-integration.json manifest: name, config_schema, actions, scenes, widget...
+docs/{en,fr,de,es}.md             user documentation, re-hosted by Gladys (same sections in the four)
+test/                             node --test, against the SDK's fake Gladys and test/helpers/fakeNintendo.js
+test/fixtures/nintendo/           real anonymized API answers (pynintendoparental tests), see its README
 .github/scripts/release.mjs       release helpers (manifest bump, changelog), tested in test/
 ```
 
@@ -70,8 +78,10 @@ test/                             node --test, against the SDK's fake Gladys (in
   `type: "provider"`: 5.1.0). `test/manifest.test.js` ties the manifest to the
   code (defaults, action, scene and widget handlers): change both sides
   together.
-- **User-facing text** is bilingual (English and French): action messages,
-  manifest texts, and `docs/en.md` / `docs/fr.md`, kept in sync.
+- **User-facing text** exists in four languages (English, French, German with
+  "du", Spanish with "usted"): action messages, widget contents, feature names,
+  manifest texts, and `docs/en.md`, `fr.md`, `de.md`, `es.md`, kept in sync
+  (`test/i18n.test.js`).
 - **Style.** Prettier formats, ESLint catches mistakes. Comments explain why,
   in English. Tests never touch the network.
 
@@ -233,3 +243,56 @@ long, et sur un « Sie »/« Ihr… » de politesse en allemand. Le store exige 
 - Docs `en`, `fr`, `de`, `es` avec les mêmes sections.
 - Chauffe, ouverture, sécurité : ne rien rendre pilotable « comme un thermostat » ou par un assistant
   vocal quand une erreur serait dangereuse (leçon d'OctoPrint).
+
+---
+
+# Nintendo Parental Controls : ce qu'il faut savoir
+
+API privée de l'appli « Nintendo Switch Parental Controls » (`com.nintendo.znma`), documentée par
+pynintendoparental (MIT) et pynintendoauth (Apache-2.0) de pantherale0, qu'utilise Home Assistant. Les
+endpoints, les en-têtes `X-Moon-*` et la version d'appli simulée (2.6.0, build 700) sont dans
+`src/nintendo/client.js` : les aligner sur pynintendoparental quand Nintendo répond `update_required`.
+
+## Connexion
+
+- Champ `account_link` (`nintendo_account`, présent dans le cœur **depuis la 5.1.0**) : le bouton Connecter
+  appelle `onOAuthAuthorizeUrl`, le conteneur rend l'URL `accounts.nintendo.com/connect/1.0.0/authorize` avec un
+  défi PKCE. Nintendo ne revient jamais vers Gladys : l'utilisateur copie le lien du bouton rouge « Choisir cette
+  personne » (`npf54789befb391a838://auth#session_token_code=…&state=…`) et le colle dans le champ `secret`
+  `redirect_link`.
+- Le code du lien sert **une fois** et expire en quelques minutes. Le conteneur garde l'empreinte du dernier lien et
+  son issue (`linkAttempt`) : un lien refusé n'est jamais renvoyé à Nintendo. Les connexions en cours (state +
+  vérificateur PKCE, 5 au plus, 24 h) sont dans `/data`, pour survivre à un redémarrage entre Connecter et le collage.
+- Le jeton de session (longue durée) est dans `/data/nintendo-state.json` (mode 600). Le porteur des requêtes est
+  l'**`id_token`** (pas l'`access_token`), valable 15 min, renouvelé 5 min avant. Un 400/401 sur `/api/token` =
+  session morte (mot de passe changé) : on l'oublie et on demande une reconnexion.
+
+## API
+
+- Par console et par rafraîchissement : `fetchDailySummaries` et `fetchParentalControlSetting` ; la liste
+  `fetchOwnedDevices` toutes les 30 min (404 = aucune console). Pas de quota publié ; 429 → pause 5 min.
+- Les résumés sont datés dans le fuseau envoyé en `X-Moon-TimeZone` (celui de Gladys, `TZ`). Le premier résumé
+  peut être celui d'hier tant que la console ne s'est pas manifestée : alors 0 joué aujourd'hui.
+- **Aucun indicateur « en train de jouer »** : « En jeu » = le temps du jour augmente (délai de grâce 20 min), le jeu
+  en cours = celui dont le temps a le plus augmenté. « En ligne » = `lastUpdatedAt` des résumés de moins de 20 min
+  (hypothèse non vérifiée sur matériel) ; `lastOnlineCheckedAt` du device n'est **pas** une présence (date
+  d'association dans les fixtures).
+- `updateExtraPlayingTime` répond **200 même en cas de refus** : lire `status` (`OVERTIME_ERROR`,
+  `DURING_LATE_NIGHT_ERROR`, `NO_EFFECT`, `FAILED`). `nextStepDetail` demande une confirmation
+  (`confirmExtraPlayingTime`, `withBedtime: true`), donnée comme l'appli. `fetchParentalControlSetting` montre le
+  bonus avec quelques secondes de retard : relire jusqu'à 3 fois.
+- Un bonus actif interdit de changer la limite ou le mode jusqu'au lendemain (garde de pynintendoparental, reprise
+  ici avec un message clair).
+- `updatePlayTimer` (v3) n'accepte que `timerMode`, `restrictionMode`, `dailyRegulations`,
+  `eachDayOfTheWeekRegulations` ; sa réponse n'a pas `ownedDevice` : garder l'ancien (bonus, alarmes).
+- Sans limite ni coucher, le temps restant est le temps jusqu'à minuit (comme l'appli et Home Assistant).
+
+## Gladys
+
+- La limite du jour est un `text/select` (valeurs chaîne autorisées **seulement** sur ce couple, cœur
+  `normalizeSupportedOptions`) : l'état publié est la valeur de l'option (`'none'`, `'90'`), les libellés suivent
+  `language`.
+- Le proxy des sessions de code refuse `accounts.nintendo.com` et `app.lp1.znma.srv.nintendo.net`, et `fetch` de Node
+  ignore `HTTPS_PROXY` : `scripts/probe.mjs` se lance depuis une machine qui a le réseau.
+- Le garde-fou « Sie » de `test/i18n.test.js` attrape aussi le « sie » de la 3ᵉ personne en début de phrase dans
+  `docs/de.md` : tourner la phrase autrement.

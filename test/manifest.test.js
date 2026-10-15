@@ -7,10 +7,12 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { DEVICE_BLUEPRINTS, SCENE_TRIGGER_KEYS } from '../src/devices/index.js';
-import { SCENE_ACTIONS } from '../src/scenes.js';
-import { WIDGETS } from '../src/widgets.js';
-import { DEFAULT_CONFIG } from '../src/config.js';
+import { createFakeGladys } from '@gladysassistant/integration-sdk/testing';
+import { ACTION_KEYS, SCENE_ACTION_KEYS, SCENE_TRIGGER_KEYS, createApp } from '../src/app.js';
+import { WIDGET } from '../src/widgets.js';
+import { ACCOUNT_FIELD, DEFAULT_CONFIG, REFRESH_INTERVALS } from '../src/config.js';
+import { THRESHOLDS } from '../src/tracker.js';
+import { BONUS_CHOICES, limitValues } from '../src/nintendo/model.js';
 
 const manifest = JSON.parse(
   await readFile(new URL('../gladys-assistant-integration.json', import.meta.url), 'utf8'),
@@ -29,8 +31,12 @@ const allFields = [
   ...(manifest.widgets ?? []).flatMap((widget) => widget.settings ?? []),
 ];
 
-// Actions registered outside the blueprints (see index.js).
-const REGISTRY_LEVEL_ACTIONS = ['identify'];
+// The handlers the integration registers, read from a fake Gladys.
+const registered = (() => {
+  const gladys = createFakeGladys();
+  createApp({ gladys, timers: false }).register();
+  return gladys;
+})();
 
 // Manifest fields older Gladys releases reject as unknown, with the first
 // release accepting them. The store validator refuses a manifest whose
@@ -57,13 +63,11 @@ function isAtLeast(version, required) {
   return true;
 }
 
-test('every manifest action has a registered handler', () => {
-  const handled = new Set([
-    ...DEVICE_BLUEPRINTS.flatMap((bp) => Object.keys(bp.actions ?? {})),
-    ...REGISTRY_LEVEL_ACTIONS,
-  ]);
-  for (const action of manifest.actions ?? []) {
-    assert.ok(handled.has(action.key), `manifest action "${action.key}" has no handler`);
+test('every manifest action has a registered handler, and vice versa', async () => {
+  assert.deepEqual(keysOf(manifest.actions), ACTION_KEYS);
+  for (const key of ACTION_KEYS) {
+    const ack = await registered.fake.action(key);
+    assert.notEqual(ack.error, 'not implemented', `action "${key}" has no handler`);
   }
 });
 
@@ -82,31 +86,99 @@ test('declaring catalog categories requires Gladys >= 4.86.0', () => {
 
 test('declaring scene triggers, scene actions or widgets requires Gladys >= 5.1.0', () => {
   const declared = CAPABILITY_FIELDS.filter((field) => manifest[field] !== undefined);
-  assert.ok(declared.length > 0, 'the template demonstrates the capability fields');
+  assert.ok(declared.length > 0, 'the integration declares capability fields');
   assert.ok(
     isAtLeast(minGladysVersion(), CAPABILITY_MIN_GLADYS_VERSION),
     `${declared.join(', ')} requires gladys_version >= 5.1.0, got "${manifest.gladys_version}"`,
   );
 });
 
-test('every scene_actions key has an onSceneAction handler, and vice versa', () => {
-  const declared = keysOf(manifest.scene_actions);
-  for (const key of declared) {
-    assert.equal(typeof SCENE_ACTIONS[key], 'function', `scene action "${key}" has no handler`);
-  }
-  for (const key of Object.keys(SCENE_ACTIONS)) {
-    assert.ok(declared.includes(key), `handler "${key}" is not declared in scene_actions`);
+test('every scene_actions key has an onSceneAction handler, and vice versa', async () => {
+  assert.deepEqual(keysOf(manifest.scene_actions), SCENE_ACTION_KEYS);
+  for (const key of SCENE_ACTION_KEYS) {
+    const ack = await registered.fake.sceneAction(key, {});
+    assert.notEqual(ack.error, 'not implemented', `scene action "${key}" has no handler`);
   }
 });
 
-test('every widgets key has an onWidgetGet handler, and vice versa', () => {
-  const declared = keysOf(manifest.widgets);
-  for (const key of declared) {
-    assert.equal(typeof WIDGETS[key]?.get, 'function', `widget "${key}" has no content handler`);
+test('every widgets key has an onWidgetGet handler, and vice versa', async () => {
+  assert.deepEqual(keysOf(manifest.widgets), Object.values(WIDGET));
+  for (const key of Object.values(WIDGET)) {
+    const ack = await registered.fake.widgetGet(key);
+    assert.equal(ack.success, true, `widget "${key}" has no content handler`);
   }
-  for (const key of Object.keys(WIDGETS)) {
-    assert.ok(declared.includes(key), `widget "${key}" is not declared in widgets`);
+});
+
+test('the "limit almost reached" thresholds are the options of its filter', () => {
+  const trigger = manifest.scene_triggers.find((t) => t.key === 'limit_approaching');
+  const field = trigger.fields.find((f) => f.key === 'minutes');
+  assert.deepEqual(
+    field.options.map((option) => option.value),
+    THRESHOLDS.map(String),
+  );
+  assert.equal(field.required, true);
+});
+
+test('the scene actions offer the values Nintendo accepts', () => {
+  const bonus = manifest.scene_actions
+    .find((a) => a.key === 'add_bonus_time')
+    .fields.find((f) => f.key === 'minutes');
+  assert.deepEqual(
+    bonus.options.map((option) => option.value),
+    BONUS_CHOICES.map(String),
+  );
+  const limit = manifest.scene_actions
+    .find((a) => a.key === 'set_daily_limit')
+    .fields.find((f) => f.key === 'limit');
+  assert.deepEqual(
+    limit.options.map((option) => option.value),
+    limitValues(),
+  );
+});
+
+test('every trigger can be narrowed to one console, and names it to the scene', () => {
+  for (const trigger of manifest.scene_triggers) {
+    const console = trigger.fields.find((f) => f.key === 'console');
+    assert.equal(console?.source, 'devices', `${trigger.key}: console filter`);
+    assert.ok(
+      trigger.variables.some((v) => v.key === 'console_name'),
+      `${trigger.key}: console_name variable`,
+    );
   }
+  for (const action of manifest.scene_actions) {
+    const console = action.fields.find((f) => f.key === 'console');
+    assert.equal(console?.source, 'devices', `${action.key}: console field`);
+    assert.equal(console?.required, true, `${action.key}: a console is required`);
+  }
+});
+
+test('the refresh intervals of the manifest are the ones the code accepts', () => {
+  const field = manifest.config_schema.find((f) => f.key === 'refresh_interval');
+  assert.deepEqual(
+    field.options.map((option) => option.value),
+    REFRESH_INTERVALS,
+  );
+});
+
+test('the Nintendo account is linked by the Connect button, the link pasted as a secret', () => {
+  const account = manifest.config_schema.find((f) => f.key === ACCOUNT_FIELD);
+  assert.equal(account?.type, 'account_link');
+  assert.equal(account.default, undefined);
+  assert.equal(account.placeholder, undefined);
+  const link = manifest.config_schema.find((f) => f.key === 'redirect_link');
+  assert.equal(link?.type, 'secret');
+  // Nothing sensitive in a field a scene or a dashboard can read.
+  for (const field of allFields.filter((f) => !manifest.config_schema.includes(f))) {
+    assert.ok(!['secret', 'oauth2', 'account_link'].includes(field.type), field.key);
+  }
+});
+
+test('the identity of the manifest', () => {
+  assert.equal(manifest.name, 'Nintendo Parental Controls');
+  assert.deepEqual(manifest.transports, ['cloud']);
+  assert.deepEqual(manifest.categories, ['multimedia']);
+  assert.match(manifest.docker_image, /^ghcr\.io\/guim31\/gladys-nintendo-parental:/);
+  assert.equal(manifest.type, 'device');
 });
 
 test('every scene trigger the code fires is declared in scene_triggers, and vice versa', () => {
@@ -135,7 +207,7 @@ test('config_schema defaults stay consistent with DEFAULT_CONFIG', () => {
 
 test('section fields are purely presentational', () => {
   const sections = manifest.config_schema.filter((f) => f.type === 'section');
-  assert.ok(sections.length > 0, 'the template demonstrates at least one section block');
+  assert.ok(sections.length > 0, 'the configuration starts with an intro section');
   for (const section of sections) {
     // A section stores NO value: declaring `required`, `default` or
     // `placeholder` on it rejects the manifest, and its key must never leak
@@ -160,7 +232,7 @@ test('section fields are purely presentational', () => {
 
 test('dynamic selects declare a source and no static options', () => {
   const dynamicSelects = allFields.filter((f) => f.source !== undefined);
-  assert.ok(dynamicSelects.length > 0, 'the template demonstrates a dynamic select');
+  assert.ok(dynamicSelects.length > 0, 'the scene declarations pick a console');
   for (const field of dynamicSelects) {
     assert.equal(field.source, 'devices', 'the only core-defined source in V1 is "devices"');
     assert.equal(
@@ -196,7 +268,7 @@ test('the catalog description holds 10 to 100 characters per language', () => {
 test('field placeholders are multi-language objects', () => {
   // Like `label` and `description`: a plain string rejects the manifest.
   const withPlaceholder = allFields.filter((f) => f.placeholder !== undefined);
-  assert.ok(withPlaceholder.length > 0, 'the template demonstrates a placeholder');
+  assert.ok(withPlaceholder.length > 0, 'the link field shows its beginning');
   for (const field of withPlaceholder) {
     assert.equal(typeof field.placeholder, 'object', `field "${field.key}": placeholder`);
     assert.ok(field.placeholder.en, `field "${field.key}": placeholder needs an English text`);

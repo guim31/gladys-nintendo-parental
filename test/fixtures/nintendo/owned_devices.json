@@ -1,0 +1,129 @@
+{
+  "ownedDevices": [
+    {
+      "deviceId": "567D0B5EA9582FB7",
+      "device": {
+        "id": "567D0B5EA9582FB7",
+        "notificationToken": "TESTTOKEN0000000",
+        "timeZone": "Europe/London",
+        "language": null,
+        "region": "EUROPE",
+        "serialNumber": "XKW00000000001",
+        "firmwareVersion": {
+          "displayedVersion": "21.0.1",
+          "internalVersion": 1376257
+        },
+        "links": {
+          "pairingCode": {
+            "code": "0000",
+            "createdAt": 1644690103,
+            "expiresAt": 1644690128
+          }
+        },
+        "activated": true,
+        "synchronizedUnlockCode": "0000",
+        "synchronizedParentalControlSetting": {
+          "synchronizedEtag": "2205768906795",
+          "synchronizedAt": 1764260259
+        },
+        "lastOnlineCheckedAt": 1644690127,
+        "alarmSetting": {
+          "visibility": "VISIBLE",
+          "invisibleUntil": 0
+        },
+        "extraPlayingTime": null,
+        "platformGeneration": "P00",
+        "externalNickname": "lauren11",
+        "iconUri": {
+          "lightTheme": {
+            "small": "https://wb.lp1.chameleon.srv.nintendo.net/img?pc=HAD&size=s&hmsDisplay=D8D8D8&theme=light&hmsMain=323232&hmsSub=ffffff&hmsBezel=000000&hmsModel=0&lcMain=0ab9e6&lcSub=001e1e&rcMain=ff3c28&rcSub=1e0a0a",
+            "middle": "https://wb.lp1.chameleon.srv.nintendo.net/img?pc=HAD&size=m&hmsDisplay=D8D8D8&theme=light&hmsMain=323232&hmsSub=ffffff&hmsBezel=000000&hmsModel=0&lcMain=0ab9e6&lcSub=001e1e&rcMain=ff3c28&rcSub=1e0a0a"
+          },
+          "darkTheme": {
+            "small": "https://wb.lp1.chameleon.srv.nintendo.net/img?pc=HAD&size=s&hmsDisplay=D8D8D8&theme=dark&hmsMain=323232&hmsSub=ffffff&hmsBezel=000000&hmsModel=0&lcMain=0ab9e6&lcSub=001e1e&rcMain=ff3c28&rcSub=1e0a0a",
+            "middle": "https://wb.lp1.chameleon.srv.nintendo.net/img?pc=HAD&size=m&hmsDisplay=D8D8D8&theme=dark&hmsMain=323232&hmsSub=ffffff&hmsBezel=000000&hmsModel=0&lcMain=0ab9e6&lcSub=001e1e&rcMain=ff3c28&rcSub=1e0a0a"
+          }
+        },
+        "createdAt": 1644690103,
+        "updatedAt": 1764668290
+      },
+      "nintendoAccountId": "0000000000000001",
+      "label": "Living room",
+      "parentalControlSettingState": {
+        "deviceId": "567D0B5EA9582FB7",
+        "targetEtag": "2205768906795",
+        "synchronizationStatus": "SYNCHRONIZED",
+        "createdAt": 1644690128,
+        "updatedAt": 1762884750
+      },
+      "hasNewMonthlySummary": true,
+      "hasFirstDailySummary": false,
+      "createdAt": 1644690103,
+      "updatedAt": 1644690128,
+      "sortOrder": null
+    },
+    {
+      "deviceId": "0A1B2C3D4E5F6071",
+      "device": {
+        "id": "0A1B2C3D4E5F6071",
+        "notificationToken": "TESTTOKEN0000000",
+        "timeZone": "Europe/London",
+        "language": null,
+        "region": "EUROPE",
+        "serialNumber": "XKW00000000002",
+        "firmwareVersion": {
+          "displayedVersion": "21.0.1",
+          "internalVersion": 1376257
+        },
+        "links": {
+          "pairingCode": {
+            "code": "0000",
+            "createdAt": 1644690103,
+            "expiresAt": 1644690128
+          }
+        },
+        "activated": true,
+        "synchronizedUnlockCode": "0000",
+        "synchronizedParentalControlSetting": {
+          "synchronizedEtag": "2205768906795",
+          "synchronizedAt": 1764260259
+        },
+        "lastOnlineCheckedAt": 1644690127,
+        "alarmSetting": {
+          "visibility": "VISIBLE",
+          "invisibleUntil": 0
+        },
+        "extraPlayingTime": null,
+        "platformGeneration": "P01",
+        "externalNickname": "lauren11",
+        "iconUri": {
+          "lightTheme": {
+            "small": "https://wb.lp1.chameleon.srv.nintendo.net/img?pc=HAD&size=s&hmsDisplay=D8D8D8&theme=light&hmsMain=323232&hmsSub=ffffff&hmsBezel=000000&hmsModel=0&lcMain=0ab9e6&lcSub=001e1e&rcMain=ff3c28&rcSub=1e0a0a",
+            "middle": "https://wb.lp1.chameleon.srv.nintendo.net/img?pc=HAD&size=m&hmsDisplay=D8D8D8&theme=light&hmsMain=323232&hmsSub=ffffff&hmsBezel=000000&hmsModel=0&lcMain=0ab9e6&lcSub=001e1e&rcMain=ff3c28&rcSub=1e0a0a"
+          },
+          "darkTheme": {
+            "small": "https://wb.lp1.chameleon.srv.nintendo.net/img?pc=HAD&size=s&hmsDisplay=D8D8D8&theme=dark&hmsMain=323232&hmsSub=ffffff&hmsBezel=000000&hmsModel=0&lcMain=0ab9e6&lcSub=001e1e&rcMain=ff3c28&rcSub=1e0a0a",
+            "middle": "https://wb.lp1.chameleon.srv.nintendo.net/img?pc=HAD&size=m&hmsDisplay=D8D8D8&theme=dark&hmsMain=323232&hmsSub=ffffff&hmsBezel=000000&hmsModel=0&lcMain=0ab9e6&lcSub=001e1e&rcMain=ff3c28&rcSub=1e0a0a"
+          }
+        },
+        "createdAt": 1644690103,
+        "updatedAt": 1764668290
+      },
+      "nintendoAccountId": "0000000000000001",
+      "label": "Bedroom",
+      "parentalControlSettingState": {
+        "deviceId": "0A1B2C3D4E5F6071",
+        "targetEtag": "2205768906795",
+        "synchronizationStatus": "SYNCHRONIZED",
+        "createdAt": 1644690128,
+        "updatedAt": 1762884750
+      },
+      "hasNewMonthlySummary": true,
+      "hasFirstDailySummary": false,
+      "createdAt": 1644690103,
+      "updatedAt": 1644690128,
+      "sortOrder": null
+    }
+  ],
+  "unconfirmedAllCopiedDevicesInfo": []
+}

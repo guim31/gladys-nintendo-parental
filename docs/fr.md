@@ -1,67 +1,117 @@
-# Template de démonstration
+# Nintendo Parental Controls
 
-Ceci est la documentation utilisateur de l'intégration. Gladys ré-héberge ce
-fichier et affiche un lien **Documentation** permanent vers lui dans l'écran
-de configuration (dans la langue de l'utilisateur, avec l'anglais en repli) —
-c'est au moment de configurer que l'utilisateur en a le plus besoin. Gardez
-les courtes indications d'accueil dans les blocs `section` du `config_schema`
-du manifest ; mettez ici le pas-à-pas détaillé (captures d'écran, dépannage…).
+## Présentation
 
-## Ce que vous obtenez
+Cette intégration amène le **contrôle parental de la Nintendo Switch** dans Gladys, comme l'appli pour smartphone « Contrôle parental Nintendo Switch » : pour chaque console liée à votre compte Nintendo, le temps de jeu du jour, la limite du jour, le temps restant, le temps bonus, le jeu en cours ou le dernier jeu, si quelqu'un joue, et ce qui se passe à la limite (une alarme seule, ou le logiciel suspendu).
 
-Six appareils de démonstration apparaissent après l'installation : une
-station météo (vraies données Open-Meteo), un interrupteur, une lampe
-variable, une prise connectée avec mesure de puissance, un détecteur de
-mouvement et une caméra.
+Elle **agit** aussi comme l'appli : changer la limite du jour, ajouter du temps bonus pour aujourd'hui, suspendre le logiciel à la limite. Des déclencheurs de scène permettent à Gladys de réagir quand un enfant commence à jouer, quand la limite est bientôt atteinte ou dépassée, et un widget de tableau de bord montre les consoles avec des boutons « +15 min » et « Suspendre ».
+
+Elle fonctionne avec la Nintendo Switch, la Nintendo Switch Lite, la Nintendo Switch OLED et la Nintendo Switch 2, via les serveurs de Nintendo (la console doit avoir accès à Internet). Elle utilise la même API privée que l'appli, documentée par la bibliothèque [pynintendoparental](https://github.com/pantherale0/pynintendoparental) qu'utilise Home Assistant. Cette intégration n'est pas affiliée à Nintendo : Nintendo Switch est une marque de Nintendo.
+
+Développée sans le matériel : ni console ni compte Nintendo n'étaient sous la main, tout a été construit sur de vraies réponses publiées avec pynintendoparental. Vos retours bienvenus, sur le forum ou dans les issues GitHub.
+
+## Prérequis
+
+- Gladys Assistant 5.1.0 ou plus récent.
+- Un compte Nintendo (celui du parent), avec la ou les consoles déjà associées dans l'appli **Contrôle parental Nintendo Switch** ([la mettre en place](https://www.nintendo.com/my/support/switch/parentalcontrols/app/setup.html)).
+- Le navigateur d'un ordinateur pour l'étape de connexion (le lien à copier y est plus facile à obtenir que sur un téléphone).
 
 ## Configuration
 
-1. Ouvrez l'onglet **Configuration** de l'intégration.
-2. Renseignez la **latitude** et la **longitude** que la station météo de
-   démonstration doit observer (Paris par défaut), et choisissez votre unité
-   de température. L'**intervalle de rafraîchissement** règle la fréquence
-   de lecture de la station météo et de la puissance de la prise : toutes
-   les 5 minutes par défaut, toutes les minutes au plus.
-3. Enregistrez : les appareils apparaissent dans l'onglet **Découverte**,
-   prêts à être ajoutés.
+Dans Gladys, **Intégrations**, **Nintendo Parental Controls**, **Configuration** :
 
-Le réglage **Préférer la connexion locale** pilote la prise de
-démonstration : elle affiche en badge le canal réellement utilisé (local ou
-cloud), avec un point orange quand elle fonctionne en mode dégradé (local
-refusé, bascule cloud).
+1. Cliquez sur **Connecter** à côté de « Compte Nintendo » : la page de connexion de Nintendo s'ouvre dans un nouvel onglet.
+2. Identifiez-vous avec le **compte parent** utilisé dans l'appli Contrôle parental. Votre mot de passe se tape sur nintendo.com seulement et ne passe jamais par Gladys.
+3. Nintendo affiche le compte et un bouton rouge **Choisir cette personne**. Ne cliquez pas dessus : faites un **clic droit** dessus et choisissez **Copier l'adresse du lien** (sur un téléphone : appui long, Copier le lien). Le lien commence par `npf54789befb391a838://auth#`.
+4. Collez-le dans **Lien de « Choisir cette personne »** et **enregistrez**. Le badge passe à connecté en quelques secondes. Le lien ne sert qu'une fois et seulement quelques minutes : s'il est refusé, cliquez à nouveau sur Connecter et collez vite le nouveau lien.
 
-## Actions
+| Champ                              | Contenu                                                                                                                                        |
+| ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| Compte Nintendo                    | Le bouton **Connecter**.                                                                                                                       |
+| Lien de « Choisir cette personne » | Le lien copié. Utilisé une fois : l'intégration garde ensuite sa propre session Nintendo dans son volume de données, jamais dans les journaux. |
+| Intervalle de rafraîchissement     | 1, 2 ou 5 minutes (1 minute par défaut).                                                                                                       |
+| Langue des noms de fonctionnalités | Anglais, français (par défaut), allemand ou espagnol : les noms des fonctionnalités, la liste des limites et les textes envoyés aux scènes.    |
 
-- **Tester le fournisseur météo** — effectue une requête en direct vers
-  Open-Meteo et affiche la température et l'humidité actuelles sous le
-  bouton.
-- **Identifier un appareil** — choisissez un de vos appareils dans la liste
-  et il se signale (la lampe de démonstration « clignote » dans les logs).
+Ouvrez ensuite l'onglet **Découverte** et ajoutez les consoles voulues comme appareils.
 
-## Scènes
+## Appareils
 
-L'intégration ajoute ses propres cartes à l'éditeur de scènes (Gladys 5.1
-ou plus récent), dans la catégorie **Intégrations** :
+Un appareil par console, nommé d'après son nom dans l'appli et son modèle, par exemple « Salon (Nintendo Switch 2) ».
 
-- **Mouvement détecté** (déclencheur) — lance la scène quand un détecteur
-  de démonstration voit bouger quelque chose. Choisissez éventuellement le
-  détecteur et ce qui a bougé (personne, animal) ; laissés vides, toute
-  détection correspond. Les actions suivantes peuvent lire ce qui a bougé
-  avec `{{triggerEvent.data.target}}`.
-- **Identifier un appareil** (action) — fait se signaler l'appareil choisi.
-  Elle indique si l'appareil a pu se signaler, pour que les actions
-  suivantes puissent en dépendre.
+| Fonctionnalité                    | Type                        | Contenu                                                                                                                                                                                                                  |
+| --------------------------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Temps de jeu aujourd'hui          | Durée (minutes)             | Temps de jeu total de la console aujourd'hui, tous les joueurs additionnés.                                                                                                                                              |
+| Temps restant                     | Durée (minutes)             | Ce que laisse la limite plus le bonus, ou le temps jusqu'à l'alarme du coucher si elle arrive avant. Sans limite ni coucher : le temps jusqu'à minuit, comme dans l'appli.                                               |
+| Limite du jour                    | Liste (**commande**)        | « Sans limite », ou de 15 minutes à 6 heures par 15 minutes, les choix de l'appli. En mode « identique chaque jour », elle change tous les jours ; en mode « par jour », seulement ce jour de la semaine, comme l'appli. |
+| Temps bonus aujourd'hui           | Durée (minutes)             | Temps en plus accordé aujourd'hui, 0 sinon. « Sans limite aujourd'hui » s'affiche 1440.                                                                                                                                  |
+| Jeu en cours ou dernier jeu       | Texte                       | Le jeu dont le temps a augmenté en dernier, ou le dernier jeu joué.                                                                                                                                                      |
+| En jeu                            | Binaire                     | 1 tant que le temps de jeu augmente. Voir « Limites » : connu avec quelques minutes de retard.                                                                                                                           |
+| En ligne                          | Binaire                     | 1 quand la console a transmis ses données de jeu dans les 20 dernières minutes, ou joue.                                                                                                                                 |
+| Suspendre le logiciel à la limite | Interrupteur (**commande**) | Allumé : le logiciel est suspendu quand la limite est atteinte. Éteint : une alarme seule.                                                                                                                               |
 
-## Tableau de bord
+Les deux commandes sont des réglages parentaux, comme dans l'appli : elles ne débloquent jamais rien qu'un parent n'ait choisi. Tout utilisateur de Gladys autorisé à piloter les appareils (ou un assistant vocal relié à Gladys) peut s'en servir : gardez au besoin les consoles hors des pièces partagées avec les enfants.
 
-Ajoutez le widget **État de la démo** à un tableau de bord : il affiche en
-direct la température de la station météo et la puissance de la prise du
-bureau, la connexion utilisée par la prise (en orange si dégradée) et la
-position observée. Son bouton **Identifier la lampe** fait se signaler la
-lampe de démonstration.
+## Widget
+
+Le widget **Nintendo Switch** montre, pour la console choisie dans ses réglages (ou la seule du compte) : le temps joué, le temps restant et la limite, le jeu en cours ou le dernier jeu, le mode à la limite, et trois boutons, chacun avec une confirmation :
+
+- **+15 min** : 15 minutes de bonus pour aujourd'hui ;
+- **Alarme seule** et **Suspendre** : ce qui se passe à la limite, le mode actuel marqué d'une coche.
+
+Une fois un bonus accordé pour la journée, Nintendo refuse tout changement du mode ou de la limite jusqu'au lendemain : le widget le dit à la place des boutons de mode. Sans console choisie et avec plusieurs consoles, le widget les liste toutes (temps joué / limite), sans boutons.
+
+## Déclencheurs de scène
+
+Chacun peut se limiter à une console, et transmet à la scène le nom de la console et le jeu.
+
+- **Commence à jouer** : le temps de jeu de la console se remet à augmenter (une nouvelle session après une pause de plus de 20 minutes). Un filtre facultatif garde un seul jeu (nom exact, comme dans l'appli). Connu avec quelques minutes de retard (voir « Limites »).
+- **Limite bientôt atteinte** : pendant le jeu, le temps restant avant la limite ou l'alarme du coucher descend à 30, 15, 10 ou 5 minutes (choisi dans le déclencheur). Une fois par passage ; un bonus ou une limite plus haute le réarme.
+- **Limite dépassée** : le temps de jeu du jour atteint la limite du jour plus le bonus. Une fois par jour, et de nouveau quand un bonus est épuisé.
+
+La première lecture après un démarrage de l'intégration, et le début d'un nouveau jour, ne font que poser la référence : aucun événement.
+
+## Actions de scène
+
+- **Ajouter du temps bonus** : 5, 10, 15 ou 30 minutes pour aujourd'hui, comme l'appli. Donne le bonus du jour et le temps restant aux étapes suivantes. Nintendo le refuse après le coucher ou quand la journée ne peut plus être prolongée : l'action de scène échoue alors avec la raison.
+- **Changer la limite du jour** : « Sans limite » ou de 15 minutes à 6 heures, écrite là où l'appli l'écrit (tous les jours, ou ce jour de la semaine en mode par jour).
+
+Une fois un bonus accordé pour la journée, Nintendo refuse une nouvelle limite jusqu'au lendemain : l'action de scène échoue alors avec la raison.
+
+## Actions de configuration
+
+- **Tester la connexion** : lit maintenant les consoles du compte et les liste, ou dit ce qui ne va pas.
+- **Se déconnecter de Nintendo** : supprime la session Nintendo gardée par l'intégration. Reconnectez-vous pour l'utiliser.
+
+## Exemples de scènes
+
+- **Prévenir avant la fin** : déclencheur « Limite bientôt atteinte », 10 minutes, la console du salon → annoncer « Plus que 10 minutes de Switch » sur l'enceinte du salon.
+- **La limite est passée** : déclencheur « Limite dépassée » → envoyer un message aux parents, et allumer « Suspendre le logiciel à la limite » pour les jours suivants.
+- **Les devoirs d'abord** : déclencheur « Commence à jouer » un jour de semaine avant 17 h → envoyer une notification aux parents avec le jeu (variables `console_name`, `game`).
+- **Récompense** : quand une tâche est marquée faite dans Gladys → action de scène « Ajouter du temps bonus », 15 minutes.
+
+## Rafraîchissement et quotas de Nintendo
+
+L'intégration interroge Nintendo d'elle-même à l'intervalle choisi (elle ne dépend pas du sondage de Gladys) : par console, deux requêtes par rafraîchissement (les résumés du jour et les réglages), plus la liste des consoles toutes les 30 minutes et un nouveau jeton d'accès environ toutes les 10 minutes. Avec une console et l'intervalle par défaut, environ 2 requêtes par minute, le rythme de l'intégration Home Assistant.
+
+Nintendo ne publie aucun quota pour cette API privée ; quand elle répond « trop de requêtes » (HTTP 429), l'intégration fait une pause de 5 minutes. Les données ne sont jamais plus fraîches que ce que la console transmet : une console envoie son temps de jeu toutes les quelques minutes, un intervalle plus court n'apporte donc pas de données plus récentes.
+
+L'API est celle de l'appli officielle, utilisée ici de la même façon, pour votre propre compte seulement. Nintendo peut la changer à tout moment : si elle exige une version plus récente de l'appli, l'écran de configuration le dit et une mise à jour de l'intégration est nécessaire.
 
 ## Dépannage
 
-L'intégration journalise tout ce qu'elle fait : consultez les logs de
-l'intégration depuis l'interface Gladys (ou `docker logs` sur l'hôte) avec
-`LOG_LEVEL=debug` pour le détail complet.
+- **« Le texte collé n'est pas le lien… »** : copiez l'adresse du lien du bouton rouge « Choisir cette personne », pas l'adresse de la page.
+- **« Nintendo a refusé le lien »** : le lien a déjà servi ou est trop ancien (quelques minutes). Cliquez à nouveau sur Connecter et collez vite le nouveau lien.
+- **« Ce lien vient d'une autre connexion »** : le lien a été copié après un autre clic sur Connecter, ou depuis un autre outil. Cliquez à nouveau sur Connecter et utilisez la nouvelle page.
+- **« Nintendo a mis fin à la session »** : le mot de passe a changé, ou le compte a été déconnecté de tous les appareils. Reconnectez-vous.
+- **« Aucune console n'est liée »** : associez d'abord la console dans l'appli Contrôle parental Nintendo Switch.
+- **Le temps de jeu ne bouge pas** : la console doit être connectée à Internet ; elle transmet son temps de jeu toutes les quelques minutes.
+- Journaux : dans Gladys, la page de l'intégration, **Journaux**. Passez la variable `LOG_LEVEL` à `debug` pour voir chaque rafraîchissement. Aucun jeton n'y est jamais écrit.
+
+## Limites
+
+- Développée sans le matériel : chaque réponse de Nintendo vient des tests publiés de pynintendoparental. Vos retours bienvenus.
+- **En jeu**, **Commence à jouer** et le jeu en cours sont déduits de la hausse du temps de jeu : Nintendo ne publie aucune information « en train de jouer ». Ils sont connus avec quelques minutes de retard, et un jeu lancé moins d'une minute peut ne pas apparaître.
+- **En ligne** signifie « a transmis des données de jeu dans les 20 dernières minutes » : Nintendo ne donne pas la présence en direct de la console.
+- L'alarme du coucher et sa fin, les réglages par jour, les restrictions de contenu, le code PIN et les rapports mensuels ne sont pas exposés : changez-les dans l'appli.
+- Une fois un bonus accordé pour la journée, Nintendo refuse tout changement de la limite ou du mode jusqu'au lendemain.
+- Un seul compte Nintendo par intégration.

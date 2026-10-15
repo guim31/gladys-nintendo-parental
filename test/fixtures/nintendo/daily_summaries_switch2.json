@@ -1,0 +1,1354 @@
+{
+  "dailySummaries": [
+    {
+      "date": "2025-12-08",
+      "result": "CALCULATING",
+      "playingTime": 0,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 7200,
+      "events": {},
+      "nonFeaturedGameCount": -1,
+      "players": []
+    },
+    {
+      "date": "2025-12-07",
+      "result": "ACHIEVED",
+      "playingTime": 70,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 3,
+      "timeZoneUtcOffsetSeconds": 7200,
+      "events": {},
+      "featuredGameIconURL": {
+        "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+        "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+        "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+        "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+        "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+      },
+      "players": [
+        {
+          "profile": {
+            "playerId": "player-1",
+            "nickname": "Player 1",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 70,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 70
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        },
+        {
+          "profile": {
+            "playerId": "player-2",
+            "nickname": "Player 2",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 70,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 70
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        }
+      ]
+    },
+    {
+      "date": "2025-12-06",
+      "result": "ACHIEVED",
+      "playingTime": 65,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 7200,
+      "events": {},
+      "featuredGameIconURL": {
+        "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+        "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+        "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+        "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+        "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+      },
+      "players": [
+        {
+          "profile": {
+            "playerId": "player-1",
+            "nickname": "Player 1",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 60,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 60
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        },
+        {
+          "profile": {
+            "playerId": "player-2",
+            "nickname": "Player 2",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 60,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 60
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        }
+      ]
+    },
+    {
+      "date": "2025-12-05",
+      "result": "ACHIEVED",
+      "playingTime": 70,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 7200,
+      "events": {},
+      "featuredGameIconURL": {
+        "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+        "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+        "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+        "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+        "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+      },
+      "players": [
+        {
+          "profile": {
+            "playerId": "player-1",
+            "nickname": "Player 1",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 70,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 70
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        },
+        {
+          "profile": {
+            "playerId": "player-2",
+            "nickname": "Player 2",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 70,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 70
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        }
+      ]
+    },
+    {
+      "date": "2025-12-04",
+      "result": "ACHIEVED",
+      "playingTime": 65,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 7200,
+      "events": {},
+      "featuredGameIconURL": {
+        "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+        "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+        "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+        "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+        "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+      },
+      "players": [
+        {
+          "profile": {
+            "playerId": "player-1",
+            "nickname": "Player 1",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 65,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 65
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        },
+        {
+          "profile": {
+            "playerId": "player-2",
+            "nickname": "Player 2",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 65,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 65
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        }
+      ]
+    },
+    {
+      "date": "2025-12-03",
+      "result": "ACHIEVED",
+      "playingTime": 70,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 7200,
+      "events": {},
+      "featuredGameIconURL": {
+        "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+        "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+        "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+        "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+        "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+      },
+      "players": [
+        {
+          "profile": {
+            "playerId": "player-1",
+            "nickname": "Player 1",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 70,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 70
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        },
+        {
+          "profile": {
+            "playerId": "player-2",
+            "nickname": "Player 2",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 65,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 65
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        }
+      ]
+    },
+    {
+      "date": "2025-12-02",
+      "result": "ACHIEVED",
+      "playingTime": 40,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 7200,
+      "events": {},
+      "featuredGameIconURL": {
+        "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+        "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+        "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+        "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+        "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+      },
+      "players": [
+        {
+          "profile": {
+            "playerId": "player-1",
+            "nickname": "Player 1",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 40,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 40
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        },
+        {
+          "profile": {
+            "playerId": "player-2",
+            "nickname": "Player 2",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 40,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 40
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        }
+      ]
+    },
+    {
+      "date": "2025-12-01",
+      "result": "ACHIEVED",
+      "playingTime": 115,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 7200,
+      "events": {},
+      "featuredGameIconURL": {
+        "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+        "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+        "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+        "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+        "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+      },
+      "nonFeaturedGameCount": 1,
+      "players": [
+        {
+          "profile": {
+            "playerId": "player-1",
+            "nickname": "Player 1",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 75,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 75
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        },
+        {
+          "profile": {
+            "playerId": "player-3",
+            "nickname": "Player 3",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 35,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "01004FF021942000",
+                "title": "EA SPORTS FC 26",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/54d07ce12da440b598e0e380611fba8a_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/54d07ce12da440b598e0e380611fba8a_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/54d07ce12da440b598e0e380611fba8a_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/54d07ce12da440b598e0e380611fba8a_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/54d07ce12da440b598e0e380611fba8a_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/01004ff021942000/DE?lang=de-DE"
+              },
+              "playingTime": 35
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        },
+        {
+          "profile": {
+            "playerId": "player-2",
+            "nickname": "Player 2",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 15,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 15
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        }
+      ]
+    },
+    {
+      "date": "2025-11-30",
+      "result": "CALCULATING",
+      "playingTime": 0,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 0,
+      "events": {},
+      "nonFeaturedGameCount": -1,
+      "players": []
+    },
+    {
+      "date": "2025-11-29",
+      "result": "CALCULATING",
+      "playingTime": 0,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 0,
+      "events": {},
+      "nonFeaturedGameCount": -1,
+      "players": []
+    },
+    {
+      "date": "2025-11-28",
+      "result": "CALCULATING",
+      "playingTime": 0,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 0,
+      "events": {},
+      "nonFeaturedGameCount": -1,
+      "players": []
+    },
+    {
+      "date": "2025-11-27",
+      "result": "CALCULATING",
+      "playingTime": 0,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 0,
+      "events": {},
+      "nonFeaturedGameCount": -1,
+      "players": []
+    },
+    {
+      "date": "2025-11-26",
+      "result": "CALCULATING",
+      "playingTime": 0,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 0,
+      "events": {},
+      "nonFeaturedGameCount": -1,
+      "players": []
+    },
+    {
+      "date": "2025-11-25",
+      "result": "CALCULATING",
+      "playingTime": 0,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 0,
+      "events": {},
+      "nonFeaturedGameCount": -1,
+      "players": []
+    },
+    {
+      "date": "2025-11-24",
+      "result": "CALCULATING",
+      "playingTime": 0,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 0,
+      "events": {},
+      "nonFeaturedGameCount": -1,
+      "players": []
+    },
+    {
+      "date": "2025-11-23",
+      "result": "CALCULATING",
+      "playingTime": 0,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 0,
+      "events": {},
+      "nonFeaturedGameCount": -1,
+      "players": []
+    },
+    {
+      "date": "2025-11-22",
+      "result": "ACHIEVED",
+      "playingTime": 0,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 7200,
+      "events": {},
+      "nonFeaturedGameCount": -1,
+      "players": []
+    },
+    {
+      "date": "2025-11-21",
+      "result": "ACHIEVED",
+      "playingTime": 0,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 7200,
+      "events": {},
+      "nonFeaturedGameCount": -1,
+      "players": []
+    },
+    {
+      "date": "2025-11-20",
+      "result": "ACHIEVED",
+      "playingTime": 0,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 7200,
+      "events": {},
+      "nonFeaturedGameCount": -1,
+      "players": []
+    },
+    {
+      "date": "2025-11-19",
+      "result": "ACHIEVED",
+      "playingTime": 0,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 7200,
+      "events": {},
+      "nonFeaturedGameCount": -1,
+      "players": []
+    },
+    {
+      "date": "2025-11-18",
+      "result": "ACHIEVED",
+      "playingTime": 0,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 7200,
+      "events": {},
+      "nonFeaturedGameCount": -1,
+      "players": []
+    },
+    {
+      "date": "2025-11-17",
+      "result": "ACHIEVED",
+      "playingTime": 0,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 7200,
+      "events": {},
+      "nonFeaturedGameCount": -1,
+      "players": []
+    },
+    {
+      "date": "2025-11-16",
+      "result": "ACHIEVED",
+      "playingTime": 0,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 7200,
+      "events": {},
+      "nonFeaturedGameCount": -1,
+      "players": []
+    },
+    {
+      "date": "2025-11-15",
+      "result": "ACHIEVED",
+      "playingTime": 70,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 7200,
+      "events": {},
+      "featuredGameIconURL": {
+        "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+        "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+        "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+        "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+        "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+      },
+      "players": [
+        {
+          "profile": {
+            "playerId": "player-1",
+            "nickname": "Player 1",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 70,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 70
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        },
+        {
+          "profile": {
+            "playerId": "player-2",
+            "nickname": "Player 2",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 70,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 70
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        }
+      ]
+    },
+    {
+      "date": "2025-11-14",
+      "result": "ACHIEVED",
+      "playingTime": 40,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 7200,
+      "events": {},
+      "featuredGameIconURL": {
+        "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+        "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+        "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+        "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+        "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+      },
+      "players": [
+        {
+          "profile": {
+            "playerId": "player-1",
+            "nickname": "Player 1",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 40,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 40
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        },
+        {
+          "profile": {
+            "playerId": "player-2",
+            "nickname": "Player 2",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 40,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 40
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        }
+      ]
+    },
+    {
+      "date": "2025-11-13",
+      "result": "ACHIEVED",
+      "playingTime": 50,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 7200,
+      "events": {},
+      "featuredGameIconURL": {
+        "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+        "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+        "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+        "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+        "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+      },
+      "players": [
+        {
+          "profile": {
+            "playerId": "player-1",
+            "nickname": "Player 1",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 50,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 50
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        },
+        {
+          "profile": {
+            "playerId": "player-2",
+            "nickname": "Player 2",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 50,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 50
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        }
+      ]
+    },
+    {
+      "date": "2025-11-12",
+      "result": "ACHIEVED",
+      "playingTime": 45,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 7200,
+      "events": {},
+      "featuredGameIconURL": {
+        "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+        "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+        "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+        "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+        "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+      },
+      "players": [
+        {
+          "profile": {
+            "playerId": "player-1",
+            "nickname": "Player 1",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 45,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 45
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        },
+        {
+          "profile": {
+            "playerId": "player-2",
+            "nickname": "Player 2",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 45,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 45
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        }
+      ]
+    },
+    {
+      "date": "2025-11-11",
+      "result": "ACHIEVED",
+      "playingTime": 3,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 7200,
+      "events": {},
+      "featuredGameIconURL": {
+        "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+        "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+        "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+        "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+        "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+      },
+      "players": [
+        {
+          "profile": {
+            "playerId": "player-1",
+            "nickname": "Player 1",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 3,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 3
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        }
+      ]
+    },
+    {
+      "date": "2025-11-10",
+      "result": "ACHIEVED",
+      "playingTime": 55,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 7200,
+      "events": {},
+      "featuredGameIconURL": {
+        "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+        "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+        "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+        "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+        "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+      },
+      "players": [
+        {
+          "profile": {
+            "playerId": "player-1",
+            "nickname": "Player 1",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 55,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 55
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        },
+        {
+          "profile": {
+            "playerId": "player-2",
+            "nickname": "Player 2",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 55,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 55
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        }
+      ]
+    },
+    {
+      "date": "2025-11-09",
+      "result": "ACHIEVED",
+      "playingTime": 70,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 7200,
+      "events": {},
+      "featuredGameIconURL": {
+        "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+        "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+        "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+        "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+        "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+      },
+      "players": [
+        {
+          "profile": {
+            "playerId": "player-1",
+            "nickname": "Player 1",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 70,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 70
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        },
+        {
+          "profile": {
+            "playerId": "player-2",
+            "nickname": "Player 2",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 65,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 65
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        }
+      ]
+    },
+    {
+      "date": "2025-11-08",
+      "result": "ACHIEVED",
+      "playingTime": 65,
+      "exceededTime": 0,
+      "disabledTime": 0,
+      "miscTime": 0,
+      "timeZoneUtcOffsetSeconds": 7200,
+      "events": {},
+      "featuredGameIconURL": {
+        "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+        "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+        "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+        "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+        "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+      },
+      "players": [
+        {
+          "profile": {
+            "playerId": "player-1",
+            "nickname": "Player 1",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 65,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 65
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        },
+        {
+          "profile": {
+            "playerId": "player-2",
+            "nickname": "Player 2",
+            "imageUri": "https://example.invalid/avatar.jpg",
+            "nsaId": "nsa-0001"
+          },
+          "playingTime": 65,
+          "playedGames": [
+            {
+              "meta": {
+                "applicationId": "0100D71004694000",
+                "title": "Minecraft for Nintendo Switch",
+                "imageUri": {
+                  "small": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_128",
+                  "extraLarge": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_1024",
+                  "medium": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_256",
+                  "extraSmall": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_3",
+                  "large": "https://atum-img-lp1.cdn.nintendo.net/i/c/266ea5ace7ac458baf96636332dc7c5c_512"
+                },
+                "hasUgc": true,
+                "shopUri": "https://ec.nintendo.com/apps/0100d71004694000/DE?lang=de-DE"
+              },
+              "playingTime": 65
+            }
+          ],
+          "firstChattedFriendshipIds": [],
+          "chatHistory": []
+        }
+      ]
+    }
+  ],
+  "lastUpdatedAt": 1765221000,
+  "friendships": {}
+}
